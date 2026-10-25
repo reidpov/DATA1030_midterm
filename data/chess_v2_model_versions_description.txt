@@ -1,0 +1,327 @@
+Note: Many feautres in this set are nominal variables such as ID's in these cases we will not be laying out all possible categories as it is not helpful.
+
+EPOCH RUN AND BENCHMARK RESULT
+
+score_target: Continuous target. Fraction of Chess Puzzles answered correctly, from 0 to 1; unit is correct answers per puzzle (0.48 = 48%). Copied from run__Best score (across scorers).
+
+run__record_id: Epoch record identifier for the selected benchmark run.
+
+run__id: Epoch run identifier distinct from the Airtable record identifier.
+
+run__Best score (across scorers): Continuous Epoch best score for the selected run; fraction correct from 0 to 1, with no physical unit. Higher is better.
+
+run__task: List of linked Epoch task record IDs; this extract contains the Chess Puzzles task only.
+
+run__model: List containing the linked Epoch model-version record ID for the run.
+
+run__Calculation: Source calculation field. The only observed value is 1; its meaning and unit are not defined in the saved source tables.
+
+run__Log download: Source field for a run-log download reference; empty.
+
+run__logs: Source field for linked run logs; empty.
+
+run__Scores: List of linked Epoch score-record IDs for the run. Identifiers.
+
+run__started_at: UTC date and time the selected run started.
+
+run__task version: Benchmark task version label. We filtered for only 2.0.0
+
+run__Status: Run outcome; the only observed category is Success. We filtered for only success in generating this dataset.
+
+run__job: Source field for a linked execution job; empty.
+
+run__log viewer: Source field for a run-log viewer reference; empty.
+
+run__Manual run: Source field for manual-run status; empty.
+
+run__comments: Free-text comments on the run; empty.
+
+run__billable_output_tokens: Billable output token count for the run; unit is tokens. Empty.
+
+run__billable_input_tokens: Billable input token count for the run; unit is tokens. Empty.
+
+run__cache_write_tokens: Cache-write token count for the run; unit is tokens. Empty.
+
+run__cache_read_tokens: Cache-read token count for the run; unit is tokens. Empty.
+
+run__benchmarks/mirrorcode_cells: Source field for MirrorCode cell links or metadata; empty.
+
+run__Manual evaluation: Source field for manual-evaluation status; empty.
+
+epoch_task_record_id: Epoch task record ID used to join runs to the Chess Puzzles task.
+
+epoch_version_record_id: Epoch model-version record ID used to join runs to versions.
+
+run_started_utc: Parsed UTC timestamp of run__started_at.
+
+EPOCH MODEL VERSION
+
+version__Version release date: Calendar date on which Epoch lists this model version as released; unit is calendar date (YYYY-MM-DD).
+
+version__benchmarks/runs: List of Epoch benchmark-run record IDs linked to the model version.
+
+version__Unique display name: Epoch's unique human-readable model-version name, including a qualifier when present.
+
+version__id: Epoch's model-version slug. Sometimes ends in a reasoning-level suffix.
+
+version__Model: List containing the linked Epoch base-model record ID.
+
+version__Display name: Epoch's display name for the model version.
+
+version__Link: URL supplied by Epoch for information about the version.
+
+version__Hugging Face developer id: Hugging Face developer identifier supplied by Epoch; empty.
+
+version__Notes: Epoch notes about the model version.
+
+EPOCH BASE MODEL
+
+epoch_base_model_record_id: Epoch base model record ID used to join versions to base models.
+
+base_model__Last modified: UTC timestamp of the last modification to the Epoch base-model record; source metadata, not the model release time.
+
+base_model__Country (from Organization): Country associated with the developing organization. Observed: China, United States of America.
+
+base_model__Confidence: Epoch's confidence in the least certain populated estimate among training compute, parameter count, and training-dataset size. Ordered estimate-confidence categories, highest to lowest: Confident = reliable, specific technical evidence and a trusted estimation method; Likely = trusted method but less reliable inputs; Speculative = an informative best guess that may change substantially. Additional statuses are not positions on that scale: Unknown = too little evidence even for a speculative estimate; Unverified = the estimate has not yet been assessed. Epoch also defines Wrong for an estimate queued for correction.
+
+base_model__Reference: Literature reference, typically the title of a paper, preprint, or technical report about the model; free text.
+
+base_model__Organization: List of linked Epoch record IDs for organizations that created the model. 
+
+base_model__Publication date: Publication, announcement, or release date of the model (YYYY-MM-DD).
+
+base_model__Authors: Comma-separated author names as reported in the associated publication, when available; free text.
+
+base_model__Task: List of linked Epoch record IDs for fine-grained tasks the model is designed to perform.
+
+base_model__Reasoning/thinking settings: Source description of available reasoning controls. Observed categories: Built-in reasoning (no setting) = reasoning without a user setting; Unknown (use Inspect default) = setting unknown, so the benchmark default applies; Yes, Anthropic-style (16k, 32k) = thinking-budget controls with those token labels; Yes, OpenAI-style (low, medium, high) = named effort controls in increasing order. These labels describe controls, not the selected run's actual effort.
+
+base_model__Link: URL to Epoch's preferred source documenting the model, favoring a paper, preprint, or technical report when available.
+
+base_model__Model: Epoch's best-known, database-unique name for the base model; used as its primary indexing label.
+
+base_model__Domain: List of linked Epoch record IDs for broad machine-learning application domains. These are IDs rather than readable domain names in this CSV.
+
+base_model__Organization categorization: Organization-sector labels populated from linked organizations. The only observed category is Industry = authors affiliated with private-sector organizations. Epoch also defines academic, research-collective, nonprofit, and industry-academia collaboration classes, but none occur in our data.
+
+base_model__Citations: Number of citations at Epoch's last update, drawn from Semantic Scholar where available or Google Scholar otherwise; unit is citations. Empty.
+
+base_model__Finetune compute (FLOP): Compute used for fine-tuning; unit is floating-point operations (FLOP). Empty.
+
+base_model__Training compute estimation method: List of methods Epoch used to find or estimate training compute. The only observed category is Benchmarks = compute estimated from the model's benchmark performance. Epoch also defines Reported, Operation counting, Hardware, and Cost methods, but they are not observed in our data.
+
+base_model__Finetune compute notes: Free-text notes on fine-tuning compute.
+
+base_model__Base model: Name of the earlier base model used for a derivative or fine-tune; nominal label.
+
+base_model__Accessibility notes: Free-text details or caveats about access to the model.
+
+base_model__Model accessibility: How the public can access and use the model. Observed categories: Open weights (unrestricted) = publicly downloadable weights without use restrictions; Open weights (restricted use) = publicly downloadable weights with use restrictions; Open weights (non-commercial) = publicly downloadable weights restricted to noncommercial use; API access = interaction through an API, possibly also a hosted service, without downloadable weights; Limited access = restricted availability, a label not defined in the quoted Epoch description. Epoch also defines Hosted access (no API) = interaction only through a hosted service, and Unreleased = no public model access; neither occurs in this column.
+
+base_model__Abstract: Abstract text from the publication associated with the model; free text.
+
+base_model__Training code accessibility: Public availability of the model's training code. The only observed category is Unreleased = training code not publicly released. This is separate from model accessibility: 70 rows with Unreleased training code still list API access to the model.
+
+base_model__Parameters: Number of learnable model parameters, such as neural-network weights and biases; unit is parameters. Consult base_model__Parameters notes for total-versus-active qualifications.
+
+base_model__Parameters notes: Free-text qualification of parameter count, such as total versus active parameters.
+
+base_model__Training dataset notes: Free-text description of training data.
+
+base_model__Dataset size notes: Free-text qualification of dataset size; empty.
+
+base_model__Training dataset size (datapoints): Number of training examples; unit is datapoints. Empty.
+
+base_model__Training dataset: Source training-dataset label. The only observed category is Unspecified unreleased = dataset details not publicly specified or released.
+
+base_model__Training compute notes: Free-text explanation or caveat about training compute.
+
+base_model__Notability criteria notes: Free-text explanation of why Epoch included the model.
+
+base_model__Hardware quantity: Number of hardware chips used in training; unit is chips. The specific hardware type is stored separately.
+
+base_model__Training compute (FLOP): Total compute used to train the model, including pretraining and fine-tuning; unit is floating-point operations (FLOP). 
+
+base_model__Training compute cost (2023 USD): Estimated training compute cost using amortized hardware capital expenditure plus energy; unit is 2023 US dollars. Empty.
+
+base_model__Notability criteria: List of reasons Epoch considers the model notable. Observed categories: Discretionary = Epoch staff judged it comparably notable outside the other criteria; Significant use = substantial use (Epoch's benchmark is over one million monthly active users); SOTA improvement = state-of-the-art performance for a task at release, generally backed by a recognized benchmark; Historical significance = influential advance in AI history; Training cost = high training-compute cost (Epoch's criterion is over $1 million in 2023 USD or at least 1% of the most expensive model to date, whichever is greater). A row can have multiple categories; there is no ordering. Epoch's public list also includes Highly cited, which is not observed here.
+
+base_model__Training time (hours): Elapsed wall-clock training time across all phases, including pretraining and post-training, but excluding an earlier published base model's training; unit is hours, not chip-hours. Empty.
+
+base_model__Training hardware: List of linked Epoch hardware record IDs for chip types used in training; this CSV stores IDs rather than readable hardware names.
+
+base_model__Training time notes: Free-text training-duration notes; empty.
+
+base_model__Training chip-hours: Training hardware time; unit is chip-hours (number of chips multiplied by hours). Empty.
+
+base_model__Batch size: Size of the batches used during training. Epoch's records page gives this as a numeric field without a universal unit; the unit can depend on the training setup and is not recoverable from this empty column.
+
+base_model__Approach: Source field for model-training approach; empty, so categories cannot be specified.
+
+base_model__Foundation model: Source field for foundation-model classification; empty.
+
+base_model__Epochs: Number of full passes through the training dataset; unit is epochs. Empty.
+
+base_model__Batch size notes: Free-text notes on batch size; empty.
+
+base_model__Benchmark data: Source field for benchmark-related training data; empty.
+
+base_model__Training cloud compute vendor: Name of cloud provider used for training; empty.
+
+base_model__Hardware utilization: Model FLOP utilization (MFU), the ratio of floating-point operations successfully applied to model training to the hardware's theoretical maximum. Unit is a fraction from 0 to 1. Empty.
+
+base_model__Training data center: Name or location of training data center; empty.
+
+base_model__Archived links: Source field for archived URLs; empty.
+
+base_model__Training compute lower bound: Lower estimate of training compute; unit is FLOP. Empty.
+
+base_model__Training compute upper bound: Upper estimate of training compute; unit is FLOP.
+
+base_model__Post-training compute notes: Free-text notes on post-training compute; empty.
+
+base_model__Post-training compute (FLOP): Compute used after pretraining; unit is FLOP. Empty.
+
+EPOCH BENCHMARK TASK
+
+task__BenchmarkRuns: List of Epoch run record IDs linked to Chess Puzzles; may include runs outside this extract.
+
+task__Name: Benchmark task name. The only observed category is Chess Puzzles = Epoch's chess-puzzle benchmark.
+
+task__path: Epoch task implementation path; the only observed value is bench.task.chess_puzzles.chess_puzzles.
+
+task__Description: Free-text description of the task; here, novel chess puzzles with a single best next move.
+
+task__Number of questions: Number of benchmark questions; unit is questions. Empty in this CSV.
+
+DERIVED NAMES, REASONING LABELS, AND MATCH KEYS (11 columns)
+
+model_version_name: Derived name for the model version: first nonblank of version__Unique display name, version__Display name, and version__id.
+
+base_model_name: Derived copy of base_model__Model.
+
+version_name_without_qualifier: model_version_name with its final parenthesized qualifier removed.
+
+version_name_qualifier: Final parenthesized text in model_version_name. Observed categories: none and no thinking = reasoning off; minimal, low, medium, high, xhigh, max, and Max = named reasoning effort, generally increasing in that order; thinking = reasoning on with unspecified budget; 32k thinking and 59k thinking = named thinking budgets of approximately 32,000 and 59,000 tokens; Aug 2024 = date/version label; pro, max = combined product and effort label. It is a mixed-purpose nominal field; only the effort subset has an ordinal interpretation.
+
+reasoning_level_from_name: Ordinal effort extracted from version_name_qualifier. Categories in increasing nominal effort: none = off; minimal = smallest nonzero setting; low; medium; high; xhigh = above high; max = maximum named setting. Exact compute is provider-dependent. Blank means no recognized level in the name.
+
+reasoning_level_from_slug: Same ordinal categories and order as reasoning_level_from_name, extracted from the final underscore suffix of version__id. Blank means no recognized suffix.
+
+reasoning_level: Final derived ordinal effort: reasoning_level_from_name when present, otherwise reasoning_level_from_slug. Categories and order: none < minimal < low < medium < high < xhigh < max. The order represents labels, not comparable token budgets across providers.
+
+reasoning_mode_from_name: Reasoning-mode label extracted from the version name. Observed categories: no thinking = explicit reasoning off; thinking = explicit reasoning on. Blank means the name has neither label.
+
+thinking_budget_label_from_name: Thinking-budget label extracted from the version name. Observed categories in increasing stated budget: 32k thinking = about 32,000 thinking tokens; 59k thinking = about 59,000 thinking tokens. Blank means no matching budget label.
+
+openrouter_match_method: How the Epoch version was matched to one OpenRouter model. Observed categories: base_model_name_exact = normalized base-model name matched uniquely; version_name_exact = normalized version name without qualifier matched uniquely. Unmatched rows are excluded from this CSV.
+
+openrouter_model_id: OpenRouter model ID selected by the match, equivalent to openrouter__id.
+
+OPENROUTER MODEL CATALOG
+
+openrouter__id: OpenRouter model catalog ID, commonly provider/model.
+
+openrouter__canonical_slug: OpenRouter canonical model slug, often including a release date.
+
+openrouter__hugging_face_id: Hugging Face repository ID associated with the OpenRouter model.
+
+openrouter__name: Human-readable OpenRouter model name, often prefixed by provider.
+
+openrouter__created: OpenRouter model creation time as a Unix timestamp; unit is seconds since 1970-01-01 00:00:00 UTC.
+
+openrouter__description: Free-text OpenRouter model description.
+
+openrouter__context_length: Maximum model context window advertised by OpenRouter; unit is tokens.
+
+openrouter__architecture__modality: Input-to-output modality signature. Observed categories: text->text = text input and text output; text+image->text = text/image input and text output; text+file->text = text/file input and text output; text+image+file->text = text/image/file input and text output; text+image+audio->text = text/image/audio input and text output; text+image+video->text = text/image/video input and text output; text+image+file+video->text = text/image/file/video input and text output; text+image+file+audio+video->text = text/image/file/audio/video input and text output. The plus sign means supported alternatives or combinations, not a count.
+
+openrouter__architecture__input_modalities: JSON list of supported input types. Element categories: text = written text; image = still image; file = attached document or file; audio = sound; video = moving image. A row can contain several.
+
+openrouter__architecture__output_modalities: JSON list of supported output types. The only observed element category is text = written text.
+
+openrouter__architecture__tokenizer: Tokenizer or model-family label. Observed categories: Claude = Claude family; DeepSeek = DeepSeek family; GPT = GPT family; Gemini = Gemini family; Grok = Grok family; Qwen = Qwen family; Qwen3 = Qwen version 3 family; Other = another or unspecified tokenizer family. Nominal, not ordered.
+
+openrouter__architecture__instruct_type: Source field for instruction-tuning type; empty, so no categories can be specified.
+
+openrouter__pricing__prompt: Posted prompt/input price; unit is US dollars per input token (multiply by 1,000,000 for dollars per million tokens).
+
+openrouter__pricing__completion: Posted completion/output price; unit is US dollars per output token.
+
+openrouter__top_provider__context_length: Context limit of the top provider endpoint; unit is tokens. Can differ from openrouter__context_length.
+
+openrouter__top_provider__max_completion_tokens: Maximum output length of the top provider endpoint; unit is tokens.
+
+openrouter__top_provider__is_moderated: Boolean category: True = top provider endpoint is marked moderated; False = marked unmoderated.
+
+openrouter__per_request_limits: Source object for maximum prompt and completion tokens per request; unit is tokens. Empty.
+
+openrouter__supported_parameters: JSON list of API request controls supported by the OpenRouter model. Observed element categories: frequency_penalty = penalize frequently repeated tokens; include_reasoning = return reasoning content when available; logit_bias = adjust token selection probabilities; logprobs = return token log probabilities; max_completion_tokens = cap generated tokens; max_tokens = cap generated tokens under the alternative parameter name; min_p = minimum-probability sampling threshold; parallel_tool_calls = permit simultaneous tool calls; prediction = supply predicted output content; presence_penalty = penalize already-mentioned tokens; reasoning = configure reasoning behavior; reasoning_effort = choose a named reasoning effort; repetition_penalty = penalize repeated text; response_format = constrain response format; seed = set a repeatability seed; stop = specify stop sequences; structured_outputs = request schema-constrained output; temperature = set sampling randomness; tool_choice = select or constrain tool use; tools = provide callable tools; top_a = dynamic probability sampling control; top_k = restrict sampling to the top k tokens; top_logprobs = return log probabilities for top token candidates; top_p = nucleus-sampling probability threshold; verbosity = select response detail; web_search_options = configure web-search use. These are nominal capability labels.
+
+openrouter__supported_voices: JSON list of supported voice names for speech output; the only observed value is [] = no voices listed.
+
+openrouter__knowledge_cutoff: Date through which the model was trained on data (YYYY-MM-DD); a calendar date, not the evaluation date.
+
+openrouter__expiration_date: Model expiration date if provided (YYYY-MM-DD); empty.
+
+openrouter__links__details: Relative OpenRouter API path for model endpoint details.
+
+openrouter__reasoning__mandatory: Boolean category: True = reasoning is required by the model; False = reasoning is not required, which does not itself establish whether reasoning is supported. Blank = unspecified.
+
+openrouter__created_utc: UTC ISO 8601 timestamp converted from openrouter__created; same event, different representation.
+
+openrouter__pricing__input_cache_read: Posted charge to read cached prompt content; unit is US dollars per cached input token.
+
+openrouter__benchmarks__design_arena: JSON list of Design Arena results. Each object can include arena (benchmark area), category (task type), elo (rating points), win_rate (percent of comparisons won), and rank (ordinal placement, 1 = best). An empty list means no results included. This column is structured benchmark metadata, not one scalar category.
+
+openrouter__benchmarks__artificial_analysis__intelligence_index: Artificial Analysis intelligence-index score; unit is index points. Higher means higher reported intelligence performance; scale details are maintained by the benchmark provider.
+
+openrouter__benchmarks__artificial_analysis__coding_index: Artificial Analysis coding-index score; unit is index points. Higher means higher reported coding performance.
+
+openrouter__benchmarks__artificial_analysis__agentic_index: Artificial Analysis agentic-index score; unit is index points. Higher means higher reported agentic performance.
+
+openrouter__reasoning__supported_efforts: JSON list of available reasoning-effort labels. Element categories in nominal increasing order: none = off; minimal = very small; low; medium; high; xhigh = above high; max = maximum named setting. Available levels vary by model and do not imply equal compute across providers.
+
+openrouter__reasoning__default_effort: Default reasoning-effort label. Observed categories in nominal increasing order: minimal < medium < high < xhigh < max. A blank cell means no default is listed.
+
+openrouter__pricing__overrides: JSON list of conditional price changes, such as thresholds by min_prompt_tokens or days of week. Nested prompt, completion, and cache prices use the same per-token US-dollar units as the corresponding top-level prices; threshold is in tokens. An empty or blank value means no override listed.
+
+openrouter__reasoning__default_enabled: Boolean category: True = reasoning enabled by default; False = disabled by default. Blank = unspecified.
+
+openrouter__default_parameters__temperature: Default sampling temperature; unitless parameter. Larger values generally mean more random sampling. This is a numeric control, not a category.
+
+openrouter__default_parameters__top_p: Default nucleus-sampling probability threshold; unitless fraction from 0 to 1.
+
+openrouter__default_parameters__repetition_penalty: Default repetition penalty; unitless multiplier/control. Empty.
+
+openrouter__alias_target__name: Display name of the target model if this catalog entry is an alias; empty.
+
+openrouter__alias_target__slug: Slug of the target model if this catalog entry is an alias; empty.
+
+openrouter__default_parameters__top_k: Default top-k sampling cutoff; unit is candidate tokens. Empty.
+
+openrouter__pricing__image: Posted image-input price; unit is US dollars per input image.
+
+openrouter__pricing__audio: Posted audio-input price; unit is US dollars per audio input token.
+
+openrouter__pricing__input_audio_cache: Posted cached audio-input price; unit is US dollars per cached audio input token.
+
+openrouter__pricing__web_search: Posted web-search price; unit is US dollars per web search.
+
+openrouter__pricing__internal_reasoning: Posted internal-reasoning price; unit is US dollars per internal reasoning token.
+
+openrouter__pricing__input_cache_write: Posted charge to write prompt content to cache; unit is US dollars per cached input token.
+
+openrouter__default_parameters__frequency_penalty: Default frequency penalty; unitless numeric sampling control. Empty.
+
+openrouter__default_parameters__presence_penalty: Default presence penalty; unitless numeric sampling control. Empty.
+
+openrouter__pricing__input_cache_write_1h: Posted charge for a one-hour prompt-cache write; unit is US dollars per cached input token.
+
+openrouter__pricing__image_output: Posted generated-image price; unit is US dollars per output image. Empty.
+
+openrouter__reasoning__supports_max_tokens: Boolean category: True = the model accepts the reasoning.max_tokens request limit. The only nonblank observed value is True; blank means unspecified, not False.
+
+openrouter__pricing__audio_output: Posted audio-output price; unit is US dollars per audio output token. Empty.
+
+ChatGPT (OpenAI) was used to help draft and quickly clarify/acess API documentation in this file. Chat: https://chatgpt.com/s/cx_6add8e9ef4bc8191a0612284aa0fb3ec
