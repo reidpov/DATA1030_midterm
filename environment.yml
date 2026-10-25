@@ -1,0 +1,17 @@
+name: data1030
+channels:
+  - defaults
+dependencies:
+  - py-xgboost=3.2.0
+  - polars=1.41.2
+  - jupyter
+  - seaborn=0.13.2
+  - numpy=2.4.6
+  - pandas=3.0.3
+  - tabpfn=8.0.8
+  - python=3.14.6
+  - shap=0.52.0
+  - jupyter-ai
+  - scikit-learn=1.9.0
+  - matplotlib=3.11.0
+prefix: /opt/anaconda3/envs/data1030
