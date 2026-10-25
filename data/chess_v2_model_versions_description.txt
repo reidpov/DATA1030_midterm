@@ -324,4 +324,4 @@ openrouter__reasoning__supports_max_tokens: Boolean category: True = the model a
 
 openrouter__pricing__audio_output: Posted audio-output price; unit is US dollars per audio output token. Empty.
 
-ChatGPT (OpenAI) was used to help draft and quickly clarify/acess API documentation in this file. Chat: https://chatgpt.com/s/cx_6add8e9ef4bc8191a0612284aa0fb3ec
+ChatGPT (OpenAI) was used to help draft and quickly clarify/access API documentation in this file. Chat: https://chatgpt.com/s/cx_6add8e9ef4bc8191a0612284aa0fb3ec
